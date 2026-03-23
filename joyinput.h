@@ -180,6 +180,7 @@ static int joy_events(jsctx_t *js) {
 			else if (!js->events[ev]++) {
 				js->timers[ev] = get_time_usec();
 				if (ev < EVENT_RESTART) return ev;
+				if (ev == EVENT_RESTART) return EVENT_REWIND;
 			}
 #define REL_AX_EVENT(i) \
 	if (js->ax[num][i].st) { \
