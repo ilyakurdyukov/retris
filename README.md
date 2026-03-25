@@ -55,3 +55,31 @@ Run the game on a smart curtain without displaying graphics in the terminal:
 
 `./retris --notermgfx --js /dev/input/js0 --curtain_mac "08:65:F0:XX:XX:XX" --curtain_retry 3000`
 
+### Keyboard controls
+
+| Key(s)         | Action             |
+|----------------|--------------------|
+| Up, W, Space   | rotate right       |
+| Left, A        | move left          |
+| Right, D       | move right         |
+| Down, S        | move down          |
+| Enter          | drop               |
+| P              | pause              |
+| Backspace      | rewind             |
+| R              | restart            |
+| Esc            | quit               |
+
+### Gamepad controls
+
+| Key(s)         | Action             |
+|----------------|--------------------|
+| X, A, LB       | rotate left        |
+| Up, Y, B, RB   | rotate right       |
+| Left           | move left          |
+| Right          | move right         |
+| Down           | move down          |
+| LT, RT         | drop               |
+| Mode, Start    | pause              |
+| Select         | rewind             |
+| Select (1 sec) | restart            |
+
