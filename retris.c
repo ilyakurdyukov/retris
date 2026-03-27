@@ -197,7 +197,6 @@ static void game_randpiece(game_t *T) {
 }
 
 static void game_next(game_t *T) {
-	int i;
 	T->piece = T->next & 7;
 	T->x = T->w / 2 - 1; T->y = 0; T->r = 0;
 	// check game over
@@ -207,12 +206,6 @@ static void game_next(game_t *T) {
 		return;
 	}
 	game_op(T, 3, 0, 0, 0); // paint new piece
-	// clear next
-	for (i = 1; i < 3; i++)
-		memset(T->field + (T->h + i) * (T->w + 1), 0, 4);
-	//T->piece = T->next >> 3 & 7;
-	//game_op(T, 3, 1 - T->x, T->h + 1 - T->y, 0); // paint next
-	//T->piece = T->next & 7;
 	game_randpiece(T);
 	T->changed = 1;
 	T->state = 0;
@@ -227,7 +220,7 @@ static void game_free(game_t *T) {
 
 static game_t* game_create(unsigned w, unsigned h) {
 	game_t *T; char *p;
-	unsigned st = w + 1, n = (h + 3) * st;
+	unsigned st = w + 1, n = (h + 2) * st;
 	T = malloc(sizeof(game_t) + n);
 	if (!T) return T;
 	memset(T, 0, sizeof(game_t));
@@ -285,7 +278,6 @@ static void game_restart(game_t *T) {
 	unsigned i, w = T->w;
 	for (i = 0; i < T->h; i++)
 		memset(T->field + i * (w + 1), 0, w);
-	memset(T->field + (T->h + 1) * (w + 1), 0, (w + 1) + 4);
 	T->ncomp = T->lines = 0;
 	T->changed = T->state = 1;
 	T->cur_refresh = T->refresh;
