@@ -31,7 +31,7 @@ typedef struct {
 	unsigned axes, buttons, repeat_ms;
 	int thr[2], i_event;
 	uint32_t timers[MAX_EVENTS];
-	char events[MAX_EVENTS];
+	int8_t events[MAX_EVENTS];
 } jsctx_t;
 
 static void joy_close(jsctx_t *js) {
@@ -135,7 +135,7 @@ static void joy_init(jsctx_t *js, const char *js_dev) {
 		}
 }
 
-static inline void joy_release_event(char *ev) {
+static inline void joy_release_event(int8_t *ev) {
 	int x = *ev;
 	*ev = (x - 1) & ((x - 2) | 0x7f);
 }
