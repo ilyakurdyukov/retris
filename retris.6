@@ -38,7 +38,13 @@ Can run on both regular PCs and small development boards, tested under Armbian o
 set the refresh rate in ms (default 20)
 .TP
 .B \-\-next [\-]0..3
-how many next pieces to show, a negative value inverts the order (default 1)
+how many next pieces to show,
+.RS
+a negative value inverts the order
+.RE
+.RS
+(default 1)
+.RE
 .TP
 .B \-\-record demo.rec
 record a demo file
@@ -50,7 +56,10 @@ play a demo file
 seek N seconds from the end of the demo
 .TP
 .B \-\-dir path
-play demos from this directory (default "replays")
+play demos from this directory
+.RS
+(default "replays")
+.RE
 .TP
 .B \-\-rewind 1..120
 rewind length in seconds (default 10)

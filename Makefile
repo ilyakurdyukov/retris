@@ -6,6 +6,10 @@ ASAN = 0
 OBJS = retris.o
 CFLAGS += -DUSE_CURTAIN=$(CURTAIN)
 
+ifneq ($(REPLAYS_DIR),)
+CFLAGS += -DREPLAYS_DIR='"$(REPLAYS_DIR)"'
+endif
+
 ifneq ($(CURTAIN), 0)
 OBJS += curtain.o
 endif

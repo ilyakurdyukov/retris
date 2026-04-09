@@ -21,6 +21,9 @@ static uint64_t get_time_usec(void) {
 #define REPLAY_STR_N 6
 #define REPLAY_VER 0
 
+#ifndef REPLAYS_DIR
+#define REPLAYS_DIR "replays"
+#endif
 #define REPLAY_FMT "%s/%u.rec"
 #define REPLAY_FMT_N 1000
 #define REPLAY_PATH_MAX 260
@@ -400,7 +403,7 @@ int main(int argc, char **argv) {
 	unsigned char rewind_sec = 10;
 	game_t *T;
 	const char *record_fn = NULL, *replay_fn = NULL;
-	const char *replays_dir = "replays";
+	const char *replays_dir = REPLAYS_DIR;
 	char testdemo = 0, seek_end = 0;
 #if USE_GAMEPAD
 	jsctx_t jsctx, *js = &jsctx;
