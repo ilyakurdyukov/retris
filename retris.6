@@ -1,0 +1,137 @@
+.TH retris 6 "09 Apr 2026" "Retris"
+.SH NAME
+.B Retris
+\- A tetromino game with graphics output to a Linux terminal or LED smart curtain. In this game you can rewind time. 
+.SH DESCRIPTION
+A tetromino game with the following features:
+
+.RS
+\- demo recording and playback
+.RE
+.RS
+\- time rewind
+.RE
+.RS
+\- automatic playback of recorded demos after a gameover
+.RE
+.RS
+\- gamepad support
+.RE
+.RS
+\- Linux terminal output
+.RE
+.RS
+\- Zengge/Surplife 20x20 LED smart curtain output
+.RE
+
+Was developed specifically for the purpose of outputting to a 20x20 LED smart curtain (which use the Surplife app), so the resolution in the Linux terminal is the same.
+
+Has no relation to the game of the same name distributed on Steam (which is not a tetromino at all).
+
+Can run on both regular PCs and small development boards, tested under Armbian on Raspberry Pi Zero 2W, Orange Pi One and Orange Pi Zero Plus2 H3. But for the development board, you might need a decent USB Bluetooth adapter. For example, the built-in Bluetooth on the Raspberry Pi Zero 2W produces a very low frame rate when updating smart curtain.
+.SH SYNOPSIS
+.B retris
+.IR "" [ options ]
+.SH OPTIONS
+.TP
+.B \-\-refresh 5..100
+set the refresh rate in ms (default 20)
+.TP
+.B \-\-next [\-]0..3
+how many next pieces to show, a negative value inverts the order (default 1)
+.TP
+.B \-\-record demo.rec
+record a demo file
+.TP
+.B \-\-play demo.rec
+play a demo file
+.TP
+.B \-\-seekend N
+seek N seconds from the end of the demo
+.TP
+.B \-\-dir path
+play demos from this directory (default "replays")
+.TP
+.B \-\-rewind 1..120
+rewind length in seconds (default 10)
+.TP
+.B \-\-testdemo
+show demo info (specified by 
+.B --play
+option)
+.TP
+.B \-\-notermgfx
+disable graphics output to the terminal
+.TP
+.B \-\-color {rgb|simple|no}
+set terminal colors (default "simple")
+.SH JOYSTICK OPTIONS
+.TP
+.B \-\-js /dev/input/jsN
+specify the device
+.TP
+.B \-\-js_thr 0x4fff{,0x2fff}
+axis on/off thresholds
+.TP
+.B \-\-js_rep N
+button repeat rate in ms (default 100)
+.SH SMART CURTAIN OPTIONS
+.TP
+.B \-\-curtain_mac XX:XX:XX:XX:XX:XX
+specify the MAC address of the Zengge Smart Curtain
+.TP
+.B \-\-curtain_retry N
+retry after N ms if connection is lost (disabled by default)
+.TP
+.B \-\-curtain_refresh N
+curtain refresh rate in ms (default 67)
+.TP
+.B \-\-curtain_verbose N
+verbosity level for the Bluetooth code
+.SH EXAMPLES
+Run the game on a smart curtain without displaying graphics in the terminal:
+.TP
+.B
+retris \-\-notermgfx \-\-js /dev/input/js0 \\
+.B
+.RS
+\-\-curtain_mac "08:65:F0:XX:XX:XX" \\
+.RE
+.B
+.RS
+\-\-curtain_retry 3000
+.RE
+.SH KEYBOARD CONTROLS
+.EX
+| Key(s)         | Action             |
+|----------------|--------------------|
+| Up, W, Space   | rotate right       |
+| Left, A        | move left          |
+| Right, D       | move right         |
+| Down, S        | move down          |
+| Enter          | drop               |
+| P              | pause              |
+| Backspace      | rewind             |
+| R              | restart            |
+| Esc            | quit               |
+.EE
+.SH GAMEPAD CONTROLS
+.EX
+| Key(s)         | Action             |
+|----------------|--------------------|
+| X, A, LB       | rotate left        |
+| Up, Y, B, RB   | rotate right       |
+| Left           | move left          |
+| Right          | move right         |
+| Down           | move down          |
+| LT, RT         | drop               |
+| Mode, Start    | pause              |
+| Select         | rewind             |
+| Select (1 sec) | restart            |
+.EE
+.SH PROJECT PAGE
+.TP
+https://github.com/ilyakurdyukov/retris
+.SH COPYRIGHT
+.TP
+Copyright (C) 2026 Ilya Kurdyukov
