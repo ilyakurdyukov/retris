@@ -404,7 +404,7 @@ int main(int argc, char **argv) {
 	game_t *T;
 	const char *record_fn = NULL, *replay_fn = NULL;
 	const char *replays_dir = REPLAYS_DIR;
-	char testdemo = 0, seek_end = 0;
+	char testdemo = 0; int seek_end = 0;
 #if USE_GAMEPAD
 	jsctx_t jsctx, *js = &jsctx;
 	const char *js_fn = NULL;
@@ -607,4 +607,5 @@ end:
 #if USE_CURTAIN
 	curtain_end();
 #endif
+	return 0;
 }

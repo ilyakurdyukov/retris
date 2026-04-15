@@ -16,10 +16,6 @@
 #endif
 
 typedef struct {
-	int count;
-} js_event_t;
-
-typedef struct {
 	char ev; unsigned char st;
 } js_state_t;
 

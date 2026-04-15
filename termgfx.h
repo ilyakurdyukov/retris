@@ -183,7 +183,7 @@ static void sys_init(sysctx_t *sys) {
 			n = n == 1 ? 4 : 2;
 			memset(p[ny] + nx, 1, 6);
 			for (i = 1; i < 1 + n; i++)
-					p[ny + i][nx] = p[ny + i][nx + 5] = 1;
+				p[ny + i][nx] = p[ny + i][nx + 5] = 1;
 			memset(p[ny + i] + nx, 1, 6);
 		}
 	}
@@ -191,12 +191,12 @@ static void sys_init(sysctx_t *sys) {
 }
 
 static void draw_digit(char *p, int num) {
-	const char *font =
+	const char *font = &(num * 4)[
 		".@. .@. @@@ @@@ @.@ @@@ .@@ @@@ @@@ @@@"
 		"@.@ @@. ..@ ..@ @.@ @.. @.. ..@ @.@ @.@"
 		"@.@ .@. @@@ @@@ @@@ @@@ @@@ .@. @@@ @@@"
 		"@.@ .@. @.. ..@ ..@ ..@ @.@ .@. @.@ ..@"
-		".@. @@@ @@@ @@@ ..@ @@@ @@@ .@. @@@ @@." + num * 4;
+		".@. @@@ @@@ @@@ ..@ @@@ @@@ .@. @@@ @@."];
 	int x, y;
 	for (x = 0; x < 3; x++)
 	for (y = 0; y < 5; y++)
